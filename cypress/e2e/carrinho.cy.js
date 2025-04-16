@@ -17,5 +17,8 @@ describe("Carrinho de Compras", () => {
 
     cy.get('.shopping_cart_badge').should('contain', '2');
     cy.get('.shopping_cart_link').click();
+
+    cy.contains("Sauce Labs Backpack").should("be.visible");
+    cy.contains("Sauce Labs Bike Light").should("be.visible");
   });
 })
