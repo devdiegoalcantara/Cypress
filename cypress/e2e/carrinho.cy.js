@@ -1,17 +1,21 @@
 describe("Carrinho de Compras", () => {
-  it("should login with valid credentials", () => {
+  it("adicionar produtos ao carrinho", () => {
     // Arrange
 
     cy.visit("https://www.saucedemo.com/");
-
-    // Act 
-
     cy.get('[data-test="username"]').type("standard_user");
     cy.get('[data-test="password"]').type("secret_sauce");
     cy.get('[data-test="login-button"]').click();
 
+    // Act 
+
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+    cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
+
+
     //Assert
 
-    cy.url().should("include", "inventory.html");
+    cy.get('.shopping_cart_badge').should('contain', '2');
+    cy.get('.shopping_cart_link').click();
   });
 })
